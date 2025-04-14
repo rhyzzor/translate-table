@@ -19,5 +19,8 @@
   "description": "",
   "volta": {
     "node": "22.14.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
   }
 }
