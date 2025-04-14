@@ -20,14 +20,16 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+      "nursery": {
+        "noCommonJs": "error"
+      },
 			"recommended": true
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double",
-      "trailingComma": "all",
-      "trailingCommas": "all"
+      "semicolons": "always"
 		}
 	}
 }
