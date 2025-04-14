@@ -24,6 +24,7 @@
     "@biomejs/biome": "1.9.4"
   },
   "dependencies": {
-    "citty": "0.1.6"
+    "citty": "0.1.6",
+    "consola": "3.4.2"
   }
 }
