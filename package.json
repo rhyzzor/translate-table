@@ -1,6 +1,6 @@
 {
 	"name": "@rhyzzor/translate-table",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A powerful CLI tool for translating PostgreSQL table content to multiple languages and generating translations for internationalization (i18n).",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -16,23 +16,12 @@
 	"bin": {
 		"translate-table": "dist/index.js"
 	},
-	"files": [
-		"dist",
-		"README.md",
-		"LICENSE"
-	],
+	"files": ["dist", "README.md", "LICENSE"],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/rhyzzor/translate-table.git"
 	},
-	"keywords": [
-		"translate-table",
-		"postgresql",
-		"translation",
-		"translate",
-		"i18n",
-		"table"
-	],
+	"keywords": ["translate-table", "postgresql", "translation", "translate", "i18n", "table"],
 	"author": "Ryan Vieira Souza",
 	"license": "MIT",
 	"bugs": {
