@@ -2,7 +2,7 @@
 
 A powerful CLI tool for translating PostgreSQL table content to multiple languages and generating translations for internationalization (i18n).
 
-[![NPM Version](https://img.shields.io/npm/v/@rhyzzor/translate-table.svg)](https://www.npmjs.com/package/@rhyzzor/translate-table)
+[![NPM Version](https://img.shields.io/npm/v/translate-table.svg)](https://www.npmjs.com/package/translate-table)
 ![GitHub License](https://img.shields.io/github/license/rhyzzor/translate-table)
 
 ## Description
@@ -21,13 +21,13 @@ Ideal for projects requiring multilingual support without manual translation of 
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g @rhyzzor/translate-table
+npm install -g translate-table
 ```
 
 ### Local Installation
 
 ```bash
-npm install @rhyzzor/translate-table
+npm install translate-table
 ```
 
 ## Prerequisites
