@@ -36,28 +36,19 @@ npm install translate-table
 - A PostgreSQL database with content to translate
 - Database connection credentials
 
-## Configuration
-
-Before using `translate-table`, set up your database connection by creating a `.env` file:
-
-```
-DATABASE_URL=postgres://username:password@hostname:port/database
-```
-
-> ⚠️ **Important**: For security, never commit your `.env` file to version control.
-
 ## Usage
 
 ### Basic Command Structure
 
 ```bash
-translate-table translate --table <table_name> --original-language <language_code> [--sql]
+translate-table translate --url <database_url> --table <table_name> --original-language <language_code> [--sql]
 ```
 
 ### Command Arguments
 
 | Argument | Description | Required | Default |
 |----------|-------------|----------|---------|
+| `--url` | Database connection URL | Yes | - |
 | `--table` | The table to translate | Yes | - |
 | `--original-language` | Language code of source text | Yes | - |
 | `--sql` | Output SQL files instead of database insertion | No | `false` |
@@ -81,18 +72,18 @@ After running the command, you'll be prompted to select target languages for tra
 ### Translate a 'products' table to Spanish and English
 
 ```bash
-translate-table translate --table products --original-language pt-BR
+translate-table translate --url postgres://username:password@hostname:port/database --table products --original-language pt-BR
 ```
 
 ### Generate SQL files instead of direct database insertion
 
 ```bash
-translate-table translate --table products --original-language en --sql
+translate-table translate --url postgres://username:password@hostname:port/database --table products --original-language en --sql
 ```
 
 ## How It Works
 
-1. **Database Connection**: The tool connects to your PostgreSQL database using the credentials from your `.env` file.
+1. **Database Connection**: The tool connects to your PostgreSQL database using the `--url` parameter provided in the command.
 
 2. **Content Extraction**: It extracts data from the specified table, using the `id` and `name` columns.
 

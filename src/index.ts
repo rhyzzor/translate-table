@@ -25,13 +25,14 @@ const AVAILABLE_LANGUAGES = [
  * @returns A Promise with translation results
  */
 async function processTranslation(
+	url: string,
 	tableName: string,
 	originalLanguage: string,
 	targetLanguages: string[],
 ) {
 	// Fetch data from database
 	consola.start("Connecting to database...");
-	const values = await getTableAndValues(tableName);
+	const values = await getTableAndValues(url, tableName);
 
 	if (!values.length) {
 		throw new Error(`No values found in table ${tableName}`);
@@ -65,6 +66,11 @@ const translateCommand = defineCommand({
 		description: "Translate database tables to other languages",
 	},
 	args: {
+		url: {
+			type: "string",
+			description: "Database connection URL",
+			required: true,
+		},
 		table: {
 			type: "string",
 			description: "Table to translate",
@@ -96,17 +102,22 @@ const translateCommand = defineCommand({
 				return;
 			}
 
-			const { "original-language": originalLanguage, table, sql } = args;
+			const { "original-language": originalLanguage, table, sql, url } = args;
 
 			// Process translation
-			const translatedText = await processTranslation(table, originalLanguage, selectedLanguages);
+			const translatedText = await processTranslation(
+				url,
+				table,
+				originalLanguage,
+				selectedLanguages,
+			);
 
 			// Save results (SQL or database)
 			if (sql) {
 				generateFiles(table, translatedText);
 			} else {
 				consola.start("Inserting translated values into database...");
-				await insertIntoDatabase(table, translatedText);
+				await insertIntoDatabase(url, table, translatedText);
 			}
 		} catch (error) {
 			consola.error("Error during process:", error.message);

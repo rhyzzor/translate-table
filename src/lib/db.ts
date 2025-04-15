@@ -15,14 +15,12 @@ export interface Result {
  * Creates a database connection
  * @returns A Postgres connection instance
  */
-function createDbConnection() {
-	const dbUrl = process.env.DATABASE_URL;
-
-	if (!dbUrl) {
+function createDbConnection(url: string) {
+	if (!url) {
 		throw new Error("DATABASE_URL not defined in environment variables");
 	}
 
-	return postgres(dbUrl);
+	return postgres(url);
 }
 
 /**
@@ -31,12 +29,12 @@ function createDbConnection() {
  * @param tableName - Name of the table to query
  * @returns Promise with array of results
  */
-export async function getTableAndValues(tableName: string): Promise<Result[]> {
+export async function getTableAndValues(url: string, tableName: string): Promise<Result[]> {
 	if (!tableName) {
 		throw new Error("Table name is required");
 	}
 
-	const sql = createDbConnection();
+	const sql = createDbConnection(url);
 
 	try {
 		// SQL query with safe table name via sql tagged template
@@ -62,7 +60,11 @@ export async function getTableAndValues(tableName: string): Promise<Result[]> {
  * @param tableName - Base table name
  * @param values - Translations to be inserted
  */
-export async function insertIntoDatabase(tableName: string, values: Translation[]): Promise<void> {
+export async function insertIntoDatabase(
+	url: string,
+	tableName: string,
+	values: Translation[],
+): Promise<void> {
 	if (!tableName) {
 		throw new Error("Table name is required");
 	}
@@ -72,7 +74,7 @@ export async function insertIntoDatabase(tableName: string, values: Translation[
 		return;
 	}
 
-	const sql = createDbConnection();
+	const sql = createDbConnection(url);
 	const newTableName = `${tableName}_translations`;
 
 	try {
