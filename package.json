@@ -33,7 +33,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/node": "22.14.1",
-    "@types/pg": "8.11.13",
     "tsup": "8.4.0",
     "tsx": "4.19.3",
     "typescript": "5.8.3"
@@ -42,6 +41,7 @@
     "citty": "0.1.6",
     "consola": "3.4.2",
     "dotenv": "16.5.0",
-    "pg": "8.14.1"
+    "google-translate-api-x": "10.7.2",
+    "postgres": "3.4.5"
   }
 }
