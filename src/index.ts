@@ -4,11 +4,62 @@ import { getTableAndValues, insertIntoDatabase } from "./lib/db";
 import { generateFiles } from "./utils/sql";
 import { translateText } from "./utils/translate";
 
-export const translateCommand = defineCommand({
+/**
+ * Available languages for translation
+ */
+const AVAILABLE_LANGUAGES = [
+	{ label: "English", value: "en" },
+	{ label: "Spanish", value: "es" },
+	{ label: "Portuguese (Brazil)", value: "pt-BR" },
+];
+
+/**
+ * Gets table values and performs translation
+ *
+ * @param tableName - Table name
+ * @param originalLanguage - Original language of the texts
+ * @param targetLanguages - Languages to translate to
+ * @returns A Promise with translation results
+ */
+async function processTranslation(
+	tableName: string,
+	originalLanguage: string,
+	targetLanguages: string[],
+) {
+	// Fetch data from database
+	consola.start("Connecting to database...");
+	const values = await getTableAndValues(tableName);
+
+	if (!values.length) {
+		throw new Error(`No values found in table ${tableName}`);
+	}
+	consola.info(`Received ${values.length} records from database`);
+
+	// Perform translation
+	consola.start(
+		`Translating ${values.length} items from ${originalLanguage.toUpperCase()} to ${targetLanguages
+			.map((value) => value.toUpperCase())
+			.join(", ")}`,
+	);
+
+	const translatedText = await translateText(
+		values,
+		targetLanguages,
+		originalLanguage.toLowerCase(),
+	);
+
+	consola.success("Translation completed!");
+	return translatedText;
+}
+
+/**
+ * Main CLI command
+ */
+const translateCommand = defineCommand({
 	meta: {
 		name: "translate",
 		version: "0.0.1",
-		description: "Translate tables in database to another languages",
+		description: "Translate database tables to other languages",
 	},
 	args: {
 		table: {
@@ -29,48 +80,37 @@ export const translateCommand = defineCommand({
 		},
 	},
 	async run({ args }) {
-		const selectedLanguages = (await consola.prompt("Deploy", {
-			type: "multiselect",
-			required: true,
-			options: [
-				{ label: "English", value: "en" },
-				{ label: "Spanish", value: "es" },
-				{ label: "Portuguese (Brazil)", value: "pt-BR" },
-			],
-		})) as unknown as string[];
+		try {
+			// Request language selection for translation
+			const selectedLanguages = (await consola.prompt("Select languages", {
+				type: "multiselect",
+				required: true,
+				options: AVAILABLE_LANGUAGES,
+			})) as unknown as string[];
 
-		const { "original-language": originalLanguage, table, sql } = args;
+			if (!selectedLanguages.length) {
+				consola.error("No languages selected. Operation canceled.");
+				return;
+			}
 
-		consola.start("Connecting to database...");
-		const values = await getTableAndValues(table);
+			const { "original-language": originalLanguage, table, sql } = args;
 
-		if (!values.length) {
-			consola.error(new Error(`No values found in table ${table}`));
-			return;
+			// Process translation
+			const translatedText = await processTranslation(table, originalLanguage, selectedLanguages);
+
+			// Save results (SQL or database)
+			if (sql) {
+				generateFiles(table, translatedText);
+			} else {
+				consola.start("Inserting translated values into database...");
+				await insertIntoDatabase(table, translatedText);
+			}
+		} catch (error) {
+			consola.error("Error during process:", error.message);
+			process.exit(1);
 		}
-
-		consola.info("Received values from database!");
-
-		consola.start(
-			`Translating ${values.length} items from ${originalLanguage.toUpperCase()} to ${selectedLanguages.map((value) => value.toUpperCase()).join(", ")}`,
-		);
-
-		const translatedText = await translateText(
-			values,
-			selectedLanguages,
-			originalLanguage.toLowerCase(),
-		);
-
-		consola.success("Translation completed!");
-
-		if (sql) {
-			generateFiles(table, translatedText);
-			return;
-		}
-
-		consola.start("Inserting translated values into database...");
-		await insertIntoDatabase(table, translatedText);
 	},
 });
 
+// Run the main command
 runMain(translateCommand);
