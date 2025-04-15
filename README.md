@@ -68,11 +68,14 @@ After running the command, you'll be prompted to select target languages for tra
 
 ```
 ? Select languages › Press <space> to select, <a> to toggle all, <i> to invert selection
-❯ ◯ English
-  ◯ Spanish
-  ◯ Portuguese (Brazil)
+❯ ◯ English (en)
+  ◯ Spanish (es)
+  ◯ Portuguese (pt-BR)
+  ◯ French (fr)
+  ◯ German (de)
+  ◯ Japanese (ja)
 ```
-
+  
 ## Examples
 
 ### Translate a 'products' table to Spanish and English
@@ -124,6 +127,9 @@ The tool supports all languages available in Google Translate. The default optio
 - English (en)
 - Spanish (es)
 - Portuguese (Brazil) (pt-BR)
+- French (fr)
+- German (de)
+- Japanese (ja)
 
 For a complete list of language codes, visit: [Google Translate API Language Codes](https://github.com/AidanWelch/google-translate-api/blob/master/lib/languages.cjs)
 

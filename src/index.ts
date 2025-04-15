@@ -8,9 +8,12 @@ import { translateText } from "./utils/translate";
  * Available languages for translation
  */
 const AVAILABLE_LANGUAGES = [
-	{ label: "English", value: "en" },
-	{ label: "Spanish", value: "es" },
-	{ label: "Portuguese (Brazil)", value: "pt-BR" },
+	{ label: "English (en)", value: "en" },
+	{ label: "Spanish (es)", value: "es" },
+	{ label: "Portuguese (pt-BR)", value: "pt-BR" },
+	{ label: "French (fr)", value: "fr" },
+	{ label: "German (de)", value: "de" },
+	{ label: "Japanese (ja)", value: "ja" },
 ];
 
 /**
