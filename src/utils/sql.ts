@@ -5,7 +5,7 @@ import type { Translation } from "./translate";
 
 /**
  * Generates SQL INSERT statement for translations
- * 
+ *
  * @param tableName - Table name for insertion
  * @param values - Translation values to be inserted
  * @returns String containing SQL INSERT statement
@@ -27,7 +27,7 @@ function generateInsert(tableName: string, values: Translation[]): string {
 
 /**
  * Generates SQL files for table creation and translation insertion
- * 
+ *
  * @param tableName - Base table name
  * @param values - Translated values to be inserted
  */
@@ -62,7 +62,7 @@ export function generateFiles(tableName: string, values: Translation[]): void {
 	const sqlFilePath = path.join(sqlDirPath, sqlFileName);
 
 	try {
-		 // Ensure directory exists
+		// Ensure directory exists
 		if (!fs.existsSync(sqlDirPath)) {
 			fs.mkdirSync(sqlDirPath, { recursive: true });
 		}
