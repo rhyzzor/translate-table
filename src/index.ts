@@ -12,7 +12,7 @@ import { translateText } from "./utils/translate";
 const AVAILABLE_LANGUAGES = [
 	{ label: "English (en)", value: "en" },
 	{ label: "Spanish (es)", value: "es" },
-	{ label: "Portuguese (pt-BR)", value: "pt-BR" },
+	{ label: "Portuguese (pt)", value: "pt" },
 	{ label: "French (fr)", value: "fr" },
 	{ label: "German (de)", value: "de" },
 	{ label: "Japanese (ja)", value: "ja" },

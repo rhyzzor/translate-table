@@ -7,7 +7,7 @@ import type { Result } from "../lib/db";
 export interface Translation {
 	itemId: number; // ID of the item in the database
 	text: string; // Translated text
-	language: string; // Language code (e.g. 'en', 'es', 'pt-BR')
+	language: string; // Language code (e.g. 'en', 'es', 'pt')
 }
 
 /**
