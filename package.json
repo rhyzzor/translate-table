@@ -1,6 +1,6 @@
 {
 	"name": "translate-table",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A powerful CLI tool for translating PostgreSQL table content to multiple languages and generating translations for internationalization (i18n).",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "tsx watch",
-		"build": "tsup src/index.ts --format cjs --dts",
+		"build": "tsc",
 		"prepublishOnly": "npm run build",
 		"lint": "biome check .",
 		"format": "biome format --write ."
@@ -52,7 +52,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@types/node": "22.14.1",
-		"tsup": "8.4.0",
 		"tsx": "4.19.3",
 		"typescript": "5.8.3"
 	},
