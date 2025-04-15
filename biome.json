@@ -12,7 +12,7 @@
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-    "lineWidth": 100
+		"lineWidth": 100
 	},
 	"organizeImports": {
 		"enabled": true
@@ -20,16 +20,17 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-      "nursery": {
-        "noCommonJs": "error"
-      },
+			"correctness": {
+				"noUnusedImports": "error"
+			},
+
 			"recommended": true
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double",
-      "semicolons": "always"
+			"semicolons": "always"
 		}
 	}
 }
