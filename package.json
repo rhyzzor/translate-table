@@ -16,12 +16,23 @@
 	"bin": {
 		"translate-table": "dist/index.js"
 	},
-	"files": ["dist", "README.md", "LICENSE"],
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/rhyzzor/translate-table.git"
 	},
-	"keywords": ["translate-table", "postgresql", "translation", "translate", "i18n", "table"],
+	"keywords": [
+		"translate-table",
+		"postgresql",
+		"translation",
+		"translate",
+		"i18n",
+		"table"
+	],
 	"author": "Ryan Vieira Souza",
 	"license": "MIT",
 	"bugs": {
@@ -41,7 +52,6 @@
 	"dependencies": {
 		"citty": "0.1.6",
 		"consola": "3.4.2",
-		"dotenv": "16.5.0",
 		"google-translate-api-x": "10.7.2",
 		"postgres": "3.4.5"
 	}

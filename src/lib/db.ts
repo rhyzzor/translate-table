@@ -1,4 +1,3 @@
-import "dotenv/config";
 import consola from "consola";
 import postgres from "postgres";
 import type { Translation } from "../utils/translate";
