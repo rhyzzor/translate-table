@@ -2,7 +2,7 @@
 
 A powerful CLI tool for translating PostgreSQL table content to multiple languages and generating translations for internationalization (i18n).
 
-[![NPM Version](https://img.shields.io/npm/v/translate-table.svg)](https://www.npmjs.com/package/translate-table)
+[![NPM Version](https://img.shields.io/npm/v/translate-table.svg)](https://www.npmjs.com/package/@rhyzzor/translate-table)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Description
