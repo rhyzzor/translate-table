@@ -61,7 +61,7 @@ After running the command, you'll be prompted to select target languages for tra
 ? Select languages › Press <space> to select, <a> to toggle all, <i> to invert selection
 ❯ ◯ English (en)
   ◯ Spanish (es)
-  ◯ Portuguese (pt-BR)
+  ◯ Portuguese (pt)
   ◯ French (fr)
   ◯ German (de)
   ◯ Japanese (ja)
@@ -72,7 +72,7 @@ After running the command, you'll be prompted to select target languages for tra
 ### Translate a 'products' table to Spanish and English
 
 ```bash
-translate-table translate --url postgres://username:password@hostname:port/database --table products --original-language pt-BR
+translate-table translate --url postgres://username:password@hostname:port/database --table products --original-language pt
 ```
 
 ### Generate SQL files instead of direct database insertion
@@ -117,7 +117,7 @@ The tool supports all languages available in Google Translate. The default optio
 
 - English (en)
 - Spanish (es)
-- Portuguese (Brazil) (pt-BR)
+- Portuguese (Brazil) (pt)
 - French (fr)
 - German (de)
 - Japanese (ja)
