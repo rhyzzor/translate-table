@@ -21,13 +21,13 @@ Ideal for projects requiring multilingual support without manual translation of 
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g translate-table
+npm install -g @rhyzzor/translate-table
 ```
 
 ### Local Installation
 
 ```bash
-npm install translate-table
+npm install @rhyzzor/translate-table
 ```
 
 ## Prerequisites
